@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package weather;
+
+message LatLong {
+  float latitude = 1;
+  float longitude = 2;
+}
+
+message Location {
+  oneof location {
+    LatLong lat_long = 1;
+  }
+}

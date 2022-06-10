@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package weather;
+
+import "google/protobuf/timestamp.proto";
+import "weather-data/proto/location.proto";
+
+message Forecast {
+  Location location = 1;
+
+  enum Resolution {
+    RESOLUTION_UNSPECIFIED = 0;
+    MINUTE = 1;
+    HOUR = 2;
+    DAY = 3;
+  }
+  Resolution resolution = 2;
+
+  message Data {
+    google.protobuf.Timestamp forecast_time = 1;
+    float temperature_min_k = 2;
+    float temperature_max_k = 3;
+    float rain_mm = 4;
+    float snow_mm = 5;
+    float cloudiness = 6; // 0-1, % cloudiness.
+    float wind_speed_mps = 7; // Meters per second.
+  }
+  repeated Data data = 3;
+}

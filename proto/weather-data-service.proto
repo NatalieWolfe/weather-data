@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package weather;
+
+import "weather-data/proto/forecast.proto";
+import "weather-data/proto/location.proto";
+
+service WeatherDataService {
+  rpc GetForecast(GetForecastRequest) returns (Forecast) {}
+}
+
+message GetForecastRequest {
+  Location location = 1;
+  Forecast.Resolution resolution = 2;
+}
